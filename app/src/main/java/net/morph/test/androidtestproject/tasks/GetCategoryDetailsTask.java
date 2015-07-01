@@ -2,23 +2,25 @@ package net.morph.test.androidtestproject.tasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
+
 import net.morph.test.androidtestproject.R;
-import net.morph.test.androidtestproject.beans.models.category.Category;
+import net.morph.test.androidtestproject.beans.models.categorydetails.CategoryDetails;
 import net.morph.test.androidtestproject.connection.ServiceMethodsInterface;
 
 import java.util.ArrayList;
+
 import retrofit.RestAdapter;
 
 /**
- * Created by frank.ramos on 30/06/2015.
+ * Created by frank.ramos on 01/07/2015.
  */
-public class GetCategoriesTask extends AsyncTask<Void,Void,ArrayList<Category>>
+public class GetCategoryDetailsTask extends AsyncTask<Void,Void,ArrayList<CategoryDetails>>
 {
     public AsyncTaskInterface asyncTaskInterface=null;
     private Context context;
     private RestAdapter restAdapter;
     private String URL;
-    public GetCategoriesTask(Context context,AsyncTaskInterface asyncTaskInterface)
+    public GetCategoryDetailsTask(Context context,AsyncTaskInterface asyncTaskInterface)
     {
         URL=new String();
         URL=context.getResources().getString(R.string.serviceGetCategory);
@@ -32,13 +34,13 @@ public class GetCategoriesTask extends AsyncTask<Void,Void,ArrayList<Category>>
                 .build();
     }
     @Override
-    protected ArrayList<Category> doInBackground(Void... params) {
+    protected ArrayList<CategoryDetails> doInBackground(Void... params) {
         ServiceMethodsInterface methods = restAdapter.create(ServiceMethodsInterface.class);
-        return methods.getCategories();
+        return methods.getCategoryDetails("1");
     }
 
     @Override
-    protected void onPostExecute(ArrayList<Category> categories) {
-        asyncTaskInterface.getReturnObject(categories);
+    protected void onPostExecute(ArrayList<CategoryDetails> categoryDetails) {
+        asyncTaskInterface.getReturnObject(categoryDetails);
     }
 }

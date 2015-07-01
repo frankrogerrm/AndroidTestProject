@@ -1,11 +1,14 @@
 package net.morph.test.androidtestproject.connection;
 
-import net.morph.test.androidtestproject.beans.models.Category;
+import net.morph.test.androidtestproject.beans.models.category.Category;
+import net.morph.test.androidtestproject.beans.models.categorydetails.CategoryDetails;
 import net.morph.test.androidtestproject.beans.rest.MainJson;
 
-import java.util.List;
+
+import java.util.ArrayList;
 
 import retrofit.http.GET;
+import retrofit.http.Query;
 
 /**
  * Created by frank.ramos on 30/06/2015.
@@ -17,7 +20,11 @@ public interface ServiceMethodsInterface {
             //@Query("api_key") String key
     );
     @GET("/archies/public/category")
-    List<Category> getCategories();
+    ArrayList<Category> getCategories();
+
+    @GET("/archies/public/category/details/{id}")
+    ArrayList<CategoryDetails> getCategoryDetails(@Query("id") String key)
+    ;
 
 
 }

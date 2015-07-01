@@ -1,4 +1,4 @@
-package net.morph.test.androidtestproject.beans.models;
+package net.morph.test.androidtestproject.beans.models.category;
 
 /**
  * Created by frank.ramos on 30/06/2015.

@@ -1,9 +1,11 @@
-package net.morph.test.androidtestproject.beans.models;
+package net.morph.test.androidtestproject.beans.models.categorydetails;
+
+import net.morph.test.androidtestproject.beans.models.category.Subcategory;
 
 /**
- * Created by frank.ramos on 30/06/2015.
+ * Created by frank.ramos on 01/07/2015.
  */
-public class Category {
+public class CategoryDetails {
     public String img_path;
     public String id;
     public String enabled;

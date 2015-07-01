@@ -2,4 +2,6 @@
 <resources>
     <string name="serviceMainJson">http://api.myjson.com</string>
     <string name="serviceGetCategory">http://192.237.180.31</string>
+    <string name="imageUrlCategoryPath">http://192.237.180.31/archies/public/</string>
+
 </resources>
