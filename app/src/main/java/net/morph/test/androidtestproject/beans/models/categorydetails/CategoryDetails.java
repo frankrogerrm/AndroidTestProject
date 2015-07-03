@@ -1,6 +1,6 @@
 package net.morph.test.androidtestproject.beans.models.categorydetails;
 
-import net.morph.test.androidtestproject.beans.models.category.Subcategory;
+
 
 /**
  * Created by frank.ramos on 01/07/2015.

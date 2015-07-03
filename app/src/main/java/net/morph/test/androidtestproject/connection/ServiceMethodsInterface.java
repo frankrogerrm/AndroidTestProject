@@ -8,6 +8,7 @@ import net.morph.test.androidtestproject.beans.rest.MainJson;
 import java.util.ArrayList;
 
 import retrofit.http.GET;
+import retrofit.http.Path;
 import retrofit.http.Query;
 
 /**
@@ -23,8 +24,7 @@ public interface ServiceMethodsInterface {
     ArrayList<Category> getCategories();
 
     @GET("/archies/public/category/details/{id}")
-    ArrayList<CategoryDetails> getCategoryDetails(@Query("id") String key)
-    ;
+    CategoryDetails getCategoryDetails(@Path("id")String id);
 
 
 }

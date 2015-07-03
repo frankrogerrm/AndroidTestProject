@@ -1,10 +1,14 @@
 package net.morph.test.androidtestproject.tasks;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
+
+import net.morph.test.androidtestproject.R;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -15,13 +19,19 @@ import java.net.URL;
 public class GetImageTask extends AsyncTask<String,String,Bitmap> {
 
     private ImageView imageView;
-    public GetImageTask(ImageView imageView)
+    private ProgressDialog dialog;
+    private Context context;
+    public GetImageTask(ImageView imageView,Context context)
     {
         this.imageView=imageView;
+        this.context=context;
     }
     @Override
     protected void onPreExecute() {
-        super.onPreExecute();
+        //super.onPreExecute();
+        dialog=new ProgressDialog(context);
+        dialog.setMessage(context.getResources().getString(R.string.loadingMessage));
+        dialog.show();
     }
 
     @Override
@@ -41,7 +51,9 @@ public class GetImageTask extends AsyncTask<String,String,Bitmap> {
     @Override
     protected void onPostExecute(Bitmap bitmap) {
         imageView.setImageBitmap(bitmap);
-
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
 
     }
 }

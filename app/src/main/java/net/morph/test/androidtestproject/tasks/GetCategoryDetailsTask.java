@@ -14,16 +14,19 @@ import retrofit.RestAdapter;
 /**
  * Created by frank.ramos on 01/07/2015.
  */
-public class GetCategoryDetailsTask extends AsyncTask<Void,Void,ArrayList<CategoryDetails>>
+public class GetCategoryDetailsTask extends AsyncTask<Void,Void,CategoryDetails>
 {
     public AsyncTaskInterface asyncTaskInterface=null;
     private Context context;
     private RestAdapter restAdapter;
     private String URL;
-    public GetCategoryDetailsTask(Context context,AsyncTaskInterface asyncTaskInterface)
+    private String id;
+    public GetCategoryDetailsTask(Context context,AsyncTaskInterface asyncTaskInterface,String id)
     {
-        URL=new String();
-        URL=context.getResources().getString(R.string.serviceGetCategory);
+        this.URL=new String();
+        this.id=new String();
+        this.URL=context.getResources().getString(R.string.serviceGetCategory);
+        this.id=id;
         this.context=context;
         this.asyncTaskInterface=asyncTaskInterface;
     }
@@ -34,13 +37,12 @@ public class GetCategoryDetailsTask extends AsyncTask<Void,Void,ArrayList<Catego
                 .build();
     }
     @Override
-    protected ArrayList<CategoryDetails> doInBackground(Void... params) {
+    protected CategoryDetails doInBackground(Void... params) {
         ServiceMethodsInterface methods = restAdapter.create(ServiceMethodsInterface.class);
-        return methods.getCategoryDetails("1");
+        return methods.getCategoryDetails(id);
     }
-
     @Override
-    protected void onPostExecute(ArrayList<CategoryDetails> categoryDetails) {
+    protected void onPostExecute(CategoryDetails categoryDetails) {
         asyncTaskInterface.getReturnObject(categoryDetails);
     }
 }
